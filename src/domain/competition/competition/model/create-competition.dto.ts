@@ -1,21 +1,30 @@
-import {MaxLength, IsNotEmpty, IsEmail, IsString, IsNumber, IS_BIC, IsBoolean} from 'class-validator';
-import {Prop} from '@nestjs/mongoose';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateCompetitionDto {
-    @IsString()
-    @IsNotEmpty()
-    @MaxLength(50)
-    readonly name: string;
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(50)
+  readonly name: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    readonly year: number;
+  @IsNumber()
+  @IsNotEmpty()
+  readonly year: number;
 
-    @IsBoolean()
-    @IsNotEmpty()
-    open: boolean;
+  @IsBoolean()
+  @IsNotEmpty()
+  open: boolean;
 
-    @IsBoolean()
-    @IsNotEmpty()
-    started: boolean;
+  @IsBoolean()
+  @IsNotEmpty()
+  started: boolean;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  active: boolean;
 }
