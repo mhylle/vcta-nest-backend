@@ -71,4 +71,20 @@ export class CompetitionService {
 
     return competition;
   }
+
+  async activateCompetition(competitionId: string): Promise<Competition> {
+    const activeCompetition = await this.getActiveCompetition();
+    if (activeCompetition) {
+      activeCompetition.active = false;
+      await activeCompetition.save();
+    }
+    const competition = await this.findOne(competitionId);
+    if (!competition) {
+      throw new NotFoundException(`Customer #${competitionId} not found`);
+    }
+    competition.active = true;
+    await competition.save();
+
+    return competition;
+  }
 }

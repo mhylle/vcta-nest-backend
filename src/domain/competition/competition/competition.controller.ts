@@ -26,6 +26,17 @@ export class CompetitionController {
     return res.status(HttpStatus.OK).json(competition);
     // return new Competition();
   }
+  @Post('/:id/active')
+  public async activateCompetition(
+    @Res() res,
+    @Param('id') competitionId: string,
+  ) {
+    const competition = await this.competitionService.activateCompetition(
+      competitionId,
+    );
+    return res.status(HttpStatus.OK).json(competition);
+    // return new Competition();
+  }
 
   @Get()
   public async getAllCompetitions(
@@ -46,7 +57,7 @@ export class CompetitionController {
   }
 
   @Post()
-  public async addCustomer(
+  public async addCompetition(
     @Res() res,
     @Body() createCompetitionDto: CreateCompetitionDto,
   ) {
