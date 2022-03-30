@@ -26,7 +26,7 @@ export class CompetitionController {
     return res.status(HttpStatus.OK).json(competition);
     // return new Competition();
   }
-  @Post('/:id/active')
+  @Post('/:id/activate')
   public async activateCompetition(
     @Res() res,
     @Param('id') competitionId: string,
